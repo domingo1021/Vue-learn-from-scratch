@@ -3,15 +3,15 @@
 <div id="app">{{message}}</div>
 
 <script>
-    const {createApp} = Vue;
+    // OptionAPI
+    const {createApp} = Vue
     const vm = createApp({
-        setup(){
-            const message = "Hello world";
+        name:"app",
+        data(){
             return{
-                message
+                message:"Hello world",
             }
         }
-    })
-    vm.mount("#app")
+    });
+    vm.mount("#app");
 </script>
-

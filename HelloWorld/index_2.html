@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/vue@3"></script>
+
+<div id="app">{{message}}</div>
+
+<script>
+    // Composition API
+    const {createApp} = Vue;
+    const vm = createApp({
+        setup(){
+            const message = "Hello world";
+            return{
+                message
+            }
+        }
+    })
+    vm.mount("#app")
+</script>
+
