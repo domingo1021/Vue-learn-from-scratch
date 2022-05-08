@@ -1,25 +1,34 @@
 <template>
 <body>
     <div id="first-edition">
-        <h3>竄改成績, 組合 v-bind + v-on: input</h3> 
+        <h3>輸入成績, 組合 v-bind + v-on: input</h3> 
         <div>
-            <input type="text" @input="changeScore" placeholder="歡迎竄改成績">
+            <input type="text" @input="changeScore" placeholder="歡迎輸入成績">
         </div>
-        
-        <br>
         <br>
         <div id="score-statement"> 
-            <div id="statement"><strong>{{object_.name}}</strong> get a grade for math:</div>
-            <div id="score">{{object_.score}}</div>
-            <br>
-            <br>
+            <div v-if="object_.valid_score">
+                <div id="statement"><strong>{{object_.name}}</strong> get a grade for math:</div>
+                <div id="score">{{object_.score}}</div>
+                <br>
+                <div>Valid score input </div>
+                <br>
+            </div>
+            <div v-else>
+                <p id="statement"></p>
+                <div id="score">{{object_.score_msg}}</div>
+                <br>
+                <br>
+                <br>
+            </div>
             <div><strong style="font-size:20px">小記: </strong>v-bind + v-on function 反而比較好用, 可以在function控制條件</div>
         </div>
-    </div>   
+    </div>
+
     <div id="second-edition">
-        <h3>竄改成績, 只用 v-model</h3> 
+        <h3>輸入成績, 只用 v-model</h3> 
         <div>
-            <input type="text" v-model="object_.score_2" placeholder="歡迎竄改成績">
+            <input type="text" v-model="object_.score_2" placeholder="歡迎輸入成績">
         </div>
         
         <br>
@@ -41,11 +50,23 @@ export default({
        let object_ = reactive({
            id : 12345,
            name: "Domingo Tsao",
-           score: 0,
-           score_2: 0,
+           score: 99,
+           score_2: null,
+           valid_score: false,
+           score_msg:null,
        })
        function changeScore(e){
-           object_.score = e.target.value;
+           if (isNaN(e.target.value)){
+               object_.valid_score=false;
+               object_.score_msg = "Invalid syntax";
+           }else if (0<=Number(e.target.value)&& Number(e.target.value)<=100){
+               object_.valid_score=true;
+               object_.score = Number(e.target.value);
+               object_.score_msg = `${object_.score}`;
+           }else{
+               object_.valid_score=false;
+               object_.score_msg = "Out of bound"
+           }
        }
        return{
            object_, changeScore
