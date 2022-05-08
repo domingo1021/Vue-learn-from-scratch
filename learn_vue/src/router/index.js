@@ -3,6 +3,7 @@ import HelloWorld from "../views/HelloWorld.vue"
 import ReactivityView from "../views/ReactivityView.vue"
 import BindView from "../views/BindView.vue"
 import VModel from "../views/VModel.vue"
+import VFor from "../views/VFor.vue"
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -25,6 +26,11 @@ const router = createRouter({
       path:"/model",
       name:"model",
       component: VModel,
+    },
+    {
+      path:"/for",
+      name:"for",
+      component: VFor,
     },
 
   ]
