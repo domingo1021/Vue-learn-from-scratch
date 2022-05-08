@@ -16,7 +16,9 @@ import { RouterLink, RouterView } from 'vue-router'
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Learning Path</a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><router-link to="/first" class="dropdown-item">Hello world</router-link></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li><router-link to="/reactivity" class="dropdown-item">Reactivity demo</router-link></li>
+                  <li><router-link to="/bind" class="dropdown-item">V-bind demo</router-link></li>
+                  <li><router-link to="/model" class="dropdown-item">V-model demo</router-link></li>                      
                   <li><hr class="dropdown-divider"></li>
                   <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
