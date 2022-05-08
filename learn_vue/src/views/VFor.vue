@@ -9,6 +9,7 @@
         <li v-for= "(item) in subject_score" :key= "item.subject">
             <div class="v-index">
                 {{item.subject}}: {{item.score}}
+                <button id="remove-subject" @click="removeSubject(item)">X</button>
             </div>
         </li>
     </ul>
@@ -22,21 +23,24 @@ export default({
     setup() {
         let subject= ref("");
         let score = ref("");
-        let subject_score=reactive([
+        let subject_score=ref([
             {subject:"Chinese", score:100},
             {subject:"Math", score:90},
             {subject:"English", score:80},
         ]);
         function submit(){
-            subject_score.push({
+            subject_score.value.push({
                 subject: subject.value,
                 score: Number(score.value),
             })
             subject.value = "";
             score.value="";
         }
+        function removeSubject(input){
+            subject_score.value = subject_score.value.filter((key)=> key.subject !== input.subject);
+        }
         return{
-            subject, score, subject_score, submit
+            subject, score, subject_score, submit, removeSubject
         }
     },
 })
@@ -62,5 +66,11 @@ input{
 }
 .submit:active{
     background-color: rgb(58, 99, 116);
+}
+#remove-subject{
+    margin-left: 5px;
+    font-size: 3px;
+    border-radius: 5px;
+    background-color: rgb(255, 215, 219);
 }
 </style>
