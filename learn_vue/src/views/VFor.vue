@@ -64,13 +64,16 @@ input{
     border-radius: 5px;
     background-color: rgb(203, 240, 255);
 }
-.submit:active{
-    background-color: rgb(58, 99, 116);
+.submit:hover{
+    background-color: rgb(80, 187, 233);
 }
 #remove-subject{
     margin-left: 5px;
     font-size: 3px;
     border-radius: 5px;
     background-color: rgb(255, 215, 219);
+}
+#remove-subject:hover{
+    background-color: rgb(243, 111, 111);
 }
 </style>
