@@ -19,9 +19,13 @@
 
 <script>
 import {ref, reactive} from "vue";
+import { useRoute } from 'vue-router';
 export default({
     setup() {
         // remember to get value by "variabel.value" for {ref} 
+        const route = useRoute();  
+        const id = route.path;
+        console.log(id)
        let object_ = reactive({
            id : 12345,
            name: "Domingo Tsao",
